@@ -49,10 +49,19 @@ perf.start();
 pangram('The quick brown fox jumps over the lazy dog!');
 let resultsPangram = perf.stop();
 
-console.log('pangram', resultsPangram.preciseWords);
+// console.log('pangram', resultsPangram.preciseWords);
 
 // 448.342 μs, O(n)
 
-const longestWord = (["hi", "hello"]) => {
-    
+const longestWord = (arr) => {
+    let answer = arr.reduce((r, c) => r.length >= c.length ? r : c);
+    return answer.length;
 }
+
+perf.start();
+longestWord(['a', 'aa', 'aaa']);
+let resultsLongestWord = perf.stop();
+
+console.log('longestWord', resultsLongestWord.preciseWords); 
+
+// 473.495 μs, O(1)
